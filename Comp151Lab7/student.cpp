@@ -7,10 +7,11 @@
 // Grades are assigned on a 10 point spread.  
 // 90-100 A   80- 89 B  70-79 C   60-69 D   Below 60 F
 
-// PLACE YOUR NAME HERE
+// Pedro J. Navarrete
 
 
 #include <iostream>
+#include<iomanip>
 using namespace std;
 
 
@@ -37,6 +38,8 @@ int main()
 	GradeType  grades;                 // grades is defined as a one dimensional array 
 	float average;                     // holds the average of a student's grade
     char moreinput;                    // determines if there is more input
+
+	cout << setprecision(2) << fixed << showpoint;
 
     // Input the number of grades for each student
 
@@ -75,14 +78,19 @@ int main()
 			cout << endl << "Please input a grade" << endl;
 		
 			// Fill in the input statement to place grade in the array
+			cin >> grades[count];
 
 		}
 
         cout << firstname << ' ' << lastname << " has an average of "; 
 	
 		// Fill in code to get and print average of student to screen
+		average = findGradeAvg(grades, numOfGrades);
+		cout << average;
 		// Fill in call to get and print letter grade of student to screen
-	    
+		cout << " which gives the letter grade of ";
+		cout << findLetterGrade(average);
+
 		cout << endl << endl << endl;
 		cout << "Please input a y if you want to input more students"
 		     << " any other character will stop the input" << endl;
@@ -107,10 +115,16 @@ int main()
 float findGradeAvg(GradeType array, int numgrades)
 
 {
-
+	float total = 0;
+	float average;
     // Fill in the code for this function
+	for (size_t i = 0; i < numgrades; i++)
+	{
+		total += array[i];
+	}
 
-
+	average = total / numgrades;
+	return average;
 }
 
 //***********************************************************************
@@ -128,8 +142,24 @@ float findGradeAvg(GradeType array, int numgrades)
 char  findLetterGrade(float numgrade)
 
 {
-	
+	char letterGrade;
   // Fill in the code for this function
+	if (numgrade >= 90){
+		letterGrade = 'A';
+	}
+	else if (numgrade >= 80) {
+		letterGrade = 'B';
+	}
+	else if (numgrade >= 70) {
+		letterGrade = 'C';
+	}
+	else if (numgrade >= 60) {
+		letterGrade = 'D';
+	}
+	else {
+		letterGrade = 'F';
+	}
 
+	return letterGrade;
 
 }
