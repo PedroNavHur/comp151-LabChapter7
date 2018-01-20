@@ -14,8 +14,12 @@ const  int MAXCOLS = 10;
 typedef float PriceType[MAXROWS][MAXCOLS];    // creates a new data type
 											  // of a 2D array of floats
 
-void   getPrices(PriceType, int&, int&);	  // gets the prices into the array
-void   printPrices(PriceType, int, int);      // prints data as a table
+void getPrices(PriceType, int&, int&);	  // gets the prices into the array
+void printPrices(PriceType, int, int);      // prints data as a table
+void printExtremes(PriceType table, int numOfRows, int numOfCols); // prints Maximun & Minimun
+float findHighestPrice(PriceType table, int numOfRows, int numOfCols); // returns the highest price in the array
+float findLowestPrice(PriceType table, int numOfRows, int numOfCols);// returns the lowest price in the array
+
 
 
 int main()
@@ -29,8 +33,7 @@ int main()
 
 	getPrices(priceTable, rowsUsed, colsUsed);  // calls getPrices to fill the array
 	printPrices(priceTable, rowsUsed, colsUsed);// calls printPrices to display array
-
-
+	printExtremes(priceTable, rowsUsed, colsUsed); // calls the printExtremes to display Max & Min
 
 	return 0;
 }
@@ -46,7 +49,6 @@ int main()
 //            and columns used.
 //
 //********************************************************************************
-
 void   getPrices(PriceType table, int& numOfRows, int& numOfCols)
 
 
@@ -57,20 +59,18 @@ void   getPrices(PriceType table, int& numOfRows, int& numOfCols)
 
 	cout << "Please input the number of columns from 1 to " << MAXCOLS << endl;
 	cin >> numOfCols;
-
+	cout << endl;
 
 	for (int row = 0; row < numOfRows; row++)
 	{
 		for (int col = 0; col < numOfCols; col++) {
 			// Fill in the code to read and store the next value in the array
-			cout << "\nPlease input price of an item with 2 decimal places\n";
+			cout << "Please input price of an item with 2 decimal places\n";
 			cin >> table[row][col];
 
 		}
 	}
 }
-
-
 
 //***************************************************************************
 //                           printPrices
@@ -81,7 +81,6 @@ void   getPrices(PriceType table, int& numOfRows, int& numOfCols)
 //  data out: none
 //
 //****************************************************************************
-
 void   printPrices(PriceType table, int numOfRows, int numOfCols)
 
 
@@ -89,6 +88,7 @@ void   printPrices(PriceType table, int numOfRows, int numOfCols)
 
 	cout << fixed << showpoint << setprecision(2);
 
+	cout << "\nTable of Prices: \n";
 	for (int row = 0; row < numOfRows; row++)
 	{
 		for (int col = 0; col < numOfCols; col++) {
@@ -99,4 +99,36 @@ void   printPrices(PriceType table, int numOfRows, int numOfCols)
 		cout << endl;
 
 	}
+}
+
+float findHighestPrice(PriceType table, int numOfRows, int numOfCols)
+// This function returns the highest price in the array
+{
+	float highestPrice;
+	highestPrice = table[0][0]; // make first element the highest price
+	for (int row = 0; row < numOfRows; row++)
+		for (int col = 0; col < numOfCols; col++)
+			if (highestPrice < table[row][col])
+				highestPrice = table[row][col];
+	return highestPrice;
+}
+
+float findLowestPrice(PriceType table, int numOfRows, int numOfCols)
+// This function returns the highest price in the array
+{
+	float lowestPrice;
+	lowestPrice = table[0][0]; // make first element the lowest price
+	for (int row = 0; row < numOfRows; row++)
+		for (int col = 0; col < numOfCols; col++)
+			if (lowestPrice > table[row][col])
+				lowestPrice = table[row][col];
+	return lowestPrice;
+}
+
+void printExtremes(PriceType table, int numOfRows, int numOfCols) {
+	float max = findHighestPrice(table, numOfRows, numOfCols); // returns the highest price in the array
+	float min = findLowestPrice(table, numOfRows, numOfCols);
+	cout << "\nThe Highest Price is: " << max;
+	cout << "\nThe Lowest Price is: " << min << endl;
+
 }
