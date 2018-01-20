@@ -2,7 +2,7 @@
 // from the keyboard and then calculates and outputs  the average score
 // as well as the highest and lowest score. There will be a maximum of 100 scores.
 
-// PLACE YOUR NAME HERE
+// Pedro J. Navarrete
 
 #include <iostream>
 using namespace std;
@@ -34,12 +34,13 @@ int main()
 
 	while (grades[pos] != -99)
 	{
-
+		pos++;
         // Fill in the code to read the grades
+		cin >> grades[pos];
 
 	}
 
-	numberOfGrades = _________;  // Fill blank with appropriate identifier
+	numberOfGrades = pos;  // Fill blank with appropriate identifier
 
 	// call to the function to find average
 	
@@ -49,13 +50,16 @@ int main()
 
 
 	//  Fill in the call to the function that calculates highest grade
-
+	highestGrade = findHighest(grades, numberOfGrades);
 
 	cout << endl << "The highest grade is " << highestGrade << endl;
 
 
 	// Fill in the call to the function that calculates lowest grade
-    // Fill in code to write the lowest to the screen
+	lowestGrade = findLowest(grades, numberOfGrades);
+	
+	// Fill in code to write the lowest to the screen
+	cout << endl << "The lowest grade is " << lowestGrade << endl;
 
 	return 0;
 }
@@ -99,8 +103,18 @@ float findAverage (const GradeType  array, int size)
 int   findHighest (const GradeType array, int size)
 
 {
-
+	int highest = array[0];
    // Fill in the code for this function
+	for (size_t i = 0; i < size; i++)
+	{
+		if (array[i] > highest)
+		{
+			highest = array[i];
+		}
+
+	}
+
+	return highest;
 
 }
 
@@ -119,6 +133,16 @@ int   findHighest (const GradeType array, int size)
 int   findLowest  (const GradeType array, int size)
 
 {
+	int lowest = array[0];
    // Fill in the code for this function
+	for (size_t i = 0; i < size; i++)
+	{
+		if (array[i] < lowest)
+		{
+			lowest = array[i];
+		}
 
+	}
+
+	return lowest;
 }
