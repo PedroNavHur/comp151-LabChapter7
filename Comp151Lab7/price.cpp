@@ -2,6 +2,7 @@
 // It will print those prices in a table form.
 
 // Pedro J. Navarrete
+// V 1.00
 
 #include <iostream>
 #include <iomanip>
@@ -88,7 +89,7 @@ void   printPrices(PriceType table, int numOfRows, int numOfCols)
 {
 
 	cout << fixed << showpoint << setprecision(2);
-
+	cout << endl;
 	for (int row = 0; row < numOfRows; row++)
 	{
 		for (int col = 0; col < numOfCols; col++) {
