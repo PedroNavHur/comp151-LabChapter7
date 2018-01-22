@@ -3,8 +3,10 @@
 // as well as the highest and lowest score. There will be a maximum of 100 scores.
 
 // Pedro J. Navarrete
+// V 1.00
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 typedef int GradeType[100];  // declares a new data type: 
@@ -45,6 +47,8 @@ int main()
 	// call to the function to find average
 	
 	avgOfGrades = findAverage(grades, numberOfGrades);
+
+	cout << fixed << setprecision(2);
 
 	cout << endl << "The average of all the grades is " << avgOfGrades << endl;
 
