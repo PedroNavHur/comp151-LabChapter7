@@ -2,7 +2,7 @@
 // Program that reads grades and returns the total number of grades
 // on a category.
 // @author: Pedro J. Navarrete
-// V 1.00
+// V 1.01
 
 #include <iostream>
 #include <iomanip>
@@ -14,6 +14,7 @@ const int MAXGRADES = 50;
 typedef char GradeType[MAXGRADES]; // new data type for grades
 
 void getGrades(GradeType, int&); // gets grades input
+void printOneGrade(GradeType, int&, char); // prints one grade
 void printGrades(GradeType, int&); // prints the number of grades
 int getFrequency(GradeType, int&, char); // gets the frequency of a letter
 
@@ -60,7 +61,7 @@ void getGrades(GradeType arrayOfGrades, int& numOfGrades) {
 //*******************************************************************
 //	getFrequency													*
 //	task:	This looks for the character in the array and returns	*
-//			the number of grades in that category					*
+//			the number of occurences of that character in the array	*
 //*******************************************************************
 int getFrequency(GradeType arrayOfGrades, int& numOfGrades, char category) {
 	int frequency = 0;
@@ -78,10 +79,19 @@ int getFrequency(GradeType arrayOfGrades, int& numOfGrades, char category) {
 //*******************************************************************
 void printGrades(GradeType arrayOfGrades, int& numOfGrades) {
 
-	cout << "\nNumber of A = " << getFrequency(arrayOfGrades, numOfGrades, 'A');
-	cout << "\nNumber of B = " << getFrequency(arrayOfGrades, numOfGrades, 'B');
-	cout << "\nNumber of C = " << getFrequency(arrayOfGrades, numOfGrades, 'C');
-	cout << "\nNumber of D = " << getFrequency(arrayOfGrades, numOfGrades, 'D');
-	cout << "\nNumber of F = " << getFrequency(arrayOfGrades, numOfGrades, 'F');
+	printOneGrade(arrayOfGrades, numOfGrades, 'A');
+	printOneGrade(arrayOfGrades, numOfGrades, 'B');
+	printOneGrade(arrayOfGrades, numOfGrades, 'C');
+	printOneGrade(arrayOfGrades, numOfGrades, 'D');
+	printOneGrade(arrayOfGrades, numOfGrades, 'F');
 	cout << endl;
+}
+
+
+//*******************************************************************
+//	printOneGrade													*
+//	task:	This prints one grade and it's frequency				*
+//*******************************************************************
+void printOneGrade(GradeType array, int& num, char grade) {
+	cout << "\nNumber of " << grade <<  " = " << getFrequency(array, num, grade);
 }
