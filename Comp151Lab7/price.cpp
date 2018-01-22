@@ -2,6 +2,7 @@
 // It will print those prices in a table form.
 
 // Pedro J. Navarrete
+// V 1.00 a
 
 #include <iostream>
 #include <iomanip>
