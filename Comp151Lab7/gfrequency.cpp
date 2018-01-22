@@ -2,6 +2,7 @@
 // Program that reads grades and returns the total number of grades
 // on a category.
 // @author: Pedro J. Navarrete
+// V 1.00
 
 #include <iostream>
 #include <iomanip>
